@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ltts-package</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Base Parent Package</name>
+
+	<parent>
+		<groupId>cn.sunline.ltts.odc</groupId>
+		<artifactId>ltts-parent</artifactId>
+		<version>1.0.6-RELEASE</version>
+	</parent>
+	<properties>
+		<!-- Base Configure -->
+		<appId>cbs</appId>
+		<!-- Assembly Configure -->
+		<descriptorName>assembly.xml</descriptorName>
+		<packageFileName>${appId}-${app-project.version}</packageFileName>
+		
+		<!-- Setting Configure -->
+		<stopTimeout>30</stopTimeout>
+		<settingName>setting.properties</settingName>
+		<logConfigName>log4j.xml</logConfigName>
+		<pluginConfigName>plugin-global-conf.properties</pluginConfigName>
+		<mainClass>cn.sunline.edsp.microcore.Bootstrap</mainClass>
+		
+		<!-- Plugin Configure -->
+		<ltts-shell.version>1.0.0-SNAPSHOT</ltts-shell.version>
+		<shell.vmOpts>-server -Xms1024m -Xmx1024m -XX:PermSize=256m
+			-XX:MaxPermSize=512m</shell.vmOpts>
+	</properties>
+	
+	<dependencies></dependencies>
+	<!-- 编译配置	-->
+	<build>
+		<plugins>
+			<!-- 拷贝依赖到target/dist/lib -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/dist/lib</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 生成unix脚本到target/dist/bin -->
+			<plugin>
+				<groupId>cn.sunline.odc</groupId>
+				<artifactId>ltts-shell-plugin</artifactId>
+				<version>${ltts-shell.version}</version>
+				<configuration>
+					<!-- 可指定运行参数 -->
+					<!-- 配置setting文件名称 (可选项,默认为 setting.properties) -->
+					<settingName>${settingName}</settingName>
+					<!-- 配置log4j文件名称 (可选项,默认为 ltts_log_server.xml) -->
+					<logConfigName>${logConfigName}</logConfigName>
+					<!-- 插件配置文件名称 (可选项,默认为 plugin-global-conf.properties) -->
+					<pluginConfigName>${pluginConfigName}</pluginConfigName>
+					<!-- 启动类入口 (可选项,默认为Bootstrap入口) -->
+					<mainClass>${mainClass}</mainClass>
+					<!-- JVM参数配置 (必填项) -->
+					<vmOpts>${shell.vmOpts}</vmOpts>
+					<stopTimeout>${stopTimeout}</stopTimeout>
+				</configuration>
+				<executions>
+					<execution>
+						<id>gen-shell</id>
+						<!-- 执行所在的生命周期 -->
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>genShell</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 打包 tar.gz部署包 -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>${descriptorName}</descriptor>
+					</descriptors>
+					<finalName>${packageFileName}</finalName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

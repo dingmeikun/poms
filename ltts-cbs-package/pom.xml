@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>cbs-package</artifactId>
+	<version>1.5.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>CBS Busi Package</name>
+
+	<parent>
+		<groupId>cn.sunline.ltts.odc</groupId>
+		<artifactId>ltts-package</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<properties>
+		<edsp-custom-dayend.version>2.6.6-BETA_3</edsp-custom-dayend.version>
+		<app-project.version>${project.version}</app-project.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-sys</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-iobus</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-language</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>cn.sunline.ltts.cbs</groupId> -->
+<!-- 			<artifactId>cbs-ag</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-aplt</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-lt</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-at</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cm</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cf</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cb</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-ct</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-ta</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-tf</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cl</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		-->
+<!-- 		<dependency> -->
+<!-- 			<groupId>cn.sunline.ltts.cbs</groupId> -->
+<!-- 			<artifactId>cbs-co</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-st</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>cn.sunline.ltts.cbs</groupId> -->
+<!-- 			<artifactId>cbs-agtran</artifactId> -->
+<!-- 			<version>${app-project.version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-aptran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>			
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-lttran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-attran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cmtran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cftran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cbtran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cttran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-tatran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-tftran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-cltran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+		-->
+<!-- 		<dependency> -->
+<!-- 			<groupId>cn.sunline.ltts.cbs</groupId> -->
+<!-- 			<artifactId>cbs-cotran</artifactId> -->
+<!-- 			<version>${app-project.version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>cn.sunline.ltts.cbs</groupId>
+			<artifactId>cbs-sttran</artifactId>
+			<version>${app-project.version}</version>
+		</dependency>
+	</dependencies>
+</project>

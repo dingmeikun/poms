@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cn.sunline.rdp.solution</groupId>
+	<artifactId>rdp-solution-parent</artifactId>
+	<packaging>pom</packaging>
+	<name>rdp sulution parent</name>
+	
+	<parent>
+		<groupId>cn.sunline.rdp</groupId>
+		<artifactId>rdp-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<dependencies>
+		<dependency>
+			<groupId>cn.sunline.ltts.rdp</groupId>
+			<artifactId>rdp-custom-plugin</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+        	<!-- 调用自定义插件打包 -->
+			<plugin>
+				<groupId>cn.sunline.ltts.rdp</groupId>
+				<artifactId>rdp-custom-plugin</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<configuration>
+					<!-- 可指定运行参数 -->
+					<!-- <logfile>error log path</logfile> -->
+					<!-- <threadCount>thread counts</threadCount> -->
+					<!-- <definePath>your dir</definePath> -->
+				</configuration>
+				<executions>
+					<execution>
+                    	<id>GenResource</id>
+                    	<phase>prepare-package</phase>
+                    	<goals>
+                        	<goal>RdpCustom</goal>
+                    	</goals>  
+                	</execution>
+                	<execution>
+                    	<id>GenScript</id>
+                    	<phase>prepare-package</phase>
+                    	<goals>
+                        	<goal>RdpMergeFile</goal>
+                    	</goals>  
+                	</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<!-- <finalName>${project.artifactId}-${project.version}</finalName> 可指定生成文件名 -->
+		<resources>
+			<resource>
+				<directory>${project.build.directory}/classes</directory>
+				<includes>
+                	<include>**/**</include>
+            	</includes>    
+            <filtering>false</filtering>
+			</resource>
+		</resources>
+	</build>
+</project>
